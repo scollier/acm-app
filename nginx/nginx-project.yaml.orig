@@ -1,0 +1,400 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/networks-status: ""
+      openshift.io/deployment-config.name: nginx-new
+      openshift.io/deployment.name: nginx-new-1
+      openshift.io/scc: restricted
+    creationTimestamp: "2020-04-17T16:32:43Z"
+    labels:
+      openshift.io/deployer-pod-for.name: nginx-new-1
+    name: nginx-new-1-deploy
+    namespace: nginx-from-ocp
+    ownerReferences:
+    - apiVersion: v1
+      kind: ReplicationController
+      name: nginx-new-1
+      uid: 31356e61-e697-4581-a165-696ba0d5aa88
+    resourceVersion: "1341602"
+    selfLink: /api/v1/namespaces/nginx-from-ocp/pods/nginx-new-1-deploy
+    uid: cccccf6a-44ad-4214-a82f-0feb4ae3c7a7
+  spec:
+    activeDeadlineSeconds: 21600
+    containers:
+    - env:
+      - name: OPENSHIFT_DEPLOYMENT_NAME
+        value: nginx-new-1
+      - name: OPENSHIFT_DEPLOYMENT_NAMESPACE
+        value: nginx-from-ocp
+      image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:170b5bed732b06def4891e4a2ec2eef84b46007aa44b2a948fe902859725961b
+      imagePullPolicy: IfNotPresent
+      name: deployment
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000650000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: deployer-token-n5qgx
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: deployer-dockercfg-6b9mp
+    nodeName: ip-10-0-151-85.ec2.internal
+    priority: 0
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000650000
+      seLinuxOptions:
+        level: s0:c26,c0
+    serviceAccount: deployer
+    serviceAccountName: deployer
+    shareProcessNamespace: false
+    terminationGracePeriodSeconds: 10
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: deployer-token-n5qgx
+      secret:
+        defaultMode: 420
+        secretName: deployer-token-n5qgx
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/networks-status: |-
+        [{
+            "name": "openshift-sdn",
+            "interface": "eth0",
+            "ips": [
+                "10.131.0.37"
+            ],
+            "dns": {},
+            "default-route": [
+                "10.131.0.1"
+            ]
+        }]
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: nginx-new
+      openshift.io/deployment.name: nginx-new-1
+      openshift.io/generated-by: OpenShiftWebConsole
+      openshift.io/scc: anyuid
+    creationTimestamp: "2020-04-17T16:32:46Z"
+    generateName: nginx-new-1-
+    labels:
+      app: nginx-new
+      deployment: nginx-new-1
+      deploymentconfig: nginx-new
+    name: nginx-new-1-k4p72
+    namespace: nginx-from-ocp
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicationController
+      name: nginx-new-1
+      uid: 31356e61-e697-4581-a165-696ba0d5aa88
+    resourceVersion: "1341519"
+    selfLink: /api/v1/namespaces/nginx-from-ocp/pods/nginx-new-1-k4p72
+    uid: e663525f-2d8f-4872-9300-c96d14cd4a22
+  spec:
+    containers:
+    - image: nginx@sha256:6b3b6c113f98e901a8b1473dee4c268cf37e93d72bc0a01e57c65b4ab99e58ee
+      imagePullPolicy: IfNotPresent
+      name: nginx-new
+      ports:
+      - containerPort: 80
+        protocol: TCP
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - MKNOD
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-cmbh2
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: default-dockercfg-r5gzg
+    nodeName: ip-10-0-151-85.ec2.internal
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      seLinuxOptions:
+        level: s0:c26,c0
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: default-token-cmbh2
+      secret:
+        defaultMode: 420
+        secretName: default-token-cmbh2
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2020-04-17 16:32:49 +0000 UTC
+      openshift.io/deployer-pod.created-at: 2020-04-17 16:32:43 +0000 UTC
+      openshift.io/deployer-pod.name: nginx-new-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: nginx-new
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"apps.openshift.io/v1","metadata":{"name":"nginx-new","namespace":"nginx-from-ocp","selfLink":"/apis/apps.openshift.io/v1/namespaces/nginx-from-ocp/deploymentconfigs/nginx-new","uid":"416d297e-ee9e-4b80-a6f0-f0f05b318a95","resourceVersion":"1341441","generation":2,"creationTimestamp":"2020-04-17T16:32:42Z","labels":{"app":"nginx-new","app.kubernetes.io/component":"nginx-new","app.kubernetes.io/instance":"nginx-new","app.kubernetes.io/part-of":"nginx-new"},"annotations":{"openshift.io/generated-by":"OpenShiftWebConsole"}},"spec":{"strategy":{"type":"Rolling","rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ImageChange","imageChangeParams":{"automatic":true,"containerNames":["nginx-new"],"from":{"kind":"ImageStreamTag","namespace":"nginx-from-ocp","name":"nginx-new:latest"},"lastTriggeredImage":"nginx@sha256:6b3b6c113f98e901a8b1473dee4c268cf37e93d72bc0a01e57c65b4ab99e58ee"}},{"type":"ConfigChange"}],"replicas":1,"revisionHistoryLimit":10,"test":false,"selector":{"app":"nginx-new","deploymentconfig":"nginx-new"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"nginx-new","deploymentconfig":"nginx-new"},"annotations":{"openshift.io/generated-by":"OpenShiftWebConsole"}},"spec":{"containers":[{"name":"nginx-new","image":"nginx@sha256:6b3b6c113f98e901a8b1473dee4c268cf37e93d72bc0a01e57c65b4ab99e58ee","ports":[{"containerPort":80,"protocol":"TCP"}],"resources":{},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":1,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]},"conditions":[{"type":"Available","status":"False","lastUpdateTime":"2020-04-17T16:32:42Z","lastTransitionTime":"2020-04-17T16:32:42Z","message":"Deployment config does not have minimum availability."}]}}
+    creationTimestamp: "2020-04-17T16:32:43Z"
+    generation: 2
+    labels:
+      app: nginx-new
+      app.kubernetes.io/component: nginx-new
+      app.kubernetes.io/instance: nginx-new
+      app.kubernetes.io/part-of: nginx-new
+      openshift.io/deployment-config.name: nginx-new
+    name: nginx-new-1
+    namespace: nginx-from-ocp
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: nginx-new
+      uid: 416d297e-ee9e-4b80-a6f0-f0f05b318a95
+    resourceVersion: "1341533"
+    selfLink: /api/v1/namespaces/nginx-from-ocp/replicationcontrollers/nginx-new-1
+    uid: 31356e61-e697-4581-a165-696ba0d5aa88
+  spec:
+    replicas: 1
+    selector:
+      app: nginx-new
+      deployment: nginx-new-1
+      deploymentconfig: nginx-new
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: nginx-new
+          openshift.io/deployment.name: nginx-new-1
+          openshift.io/generated-by: OpenShiftWebConsole
+        creationTimestamp: null
+        labels:
+          app: nginx-new
+          deployment: nginx-new-1
+          deploymentconfig: nginx-new
+      spec:
+        containers:
+        - image: nginx@sha256:6b3b6c113f98e901a8b1473dee4c268cf37e93d72bc0a01e57c65b4ab99e58ee
+          imagePullPolicy: IfNotPresent
+          name: nginx-new
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: "2020-04-17T16:32:42Z"
+    labels:
+      app: nginx-new
+      app.kubernetes.io/component: nginx-new
+      app.kubernetes.io/instance: nginx-new
+      app.kubernetes.io/name: ""
+      app.kubernetes.io/part-of: nginx-new
+      app.openshift.io/runtime: ""
+      app.openshift.io/runtime-version: latest
+    name: nginx-new
+    namespace: nginx-from-ocp
+    resourceVersion: "1341430"
+    selfLink: /api/v1/namespaces/nginx-from-ocp/services/nginx-new
+    uid: 86c6dd03-c2f3-4eb4-8e56-e2869313101d
+  spec:
+    clusterIP: 172.30.181.89
+    ports:
+    - name: 80-tcp
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    selector:
+      app: nginx-new
+      deploymentconfig: nginx-new
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftWebConsole
+    creationTimestamp: "2020-04-17T16:32:42Z"
+    generation: 2
+    labels:
+      app: nginx-new
+      app.kubernetes.io/component: nginx-new
+      app.kubernetes.io/instance: nginx-new
+      app.kubernetes.io/part-of: nginx-new
+    name: nginx-new
+    namespace: nginx-from-ocp
+    resourceVersion: "1341534"
+    selfLink: /apis/apps.openshift.io/v1/namespaces/nginx-from-ocp/deploymentconfigs/nginx-new
+    uid: 416d297e-ee9e-4b80-a6f0-f0f05b318a95
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      app: nginx-new
+      deploymentconfig: nginx-new
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftWebConsole
+        creationTimestamp: null
+        labels:
+          app: nginx-new
+          deploymentconfig: nginx-new
+      spec:
+        containers:
+        - image: nginx@sha256:6b3b6c113f98e901a8b1473dee4c268cf37e93d72bc0a01e57c65b4ab99e58ee
+          imagePullPolicy: IfNotPresent
+          name: nginx-new
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - nginx-new
+        from:
+          kind: ImageStreamTag
+          name: nginx-new:latest
+          namespace: nginx-from-ocp
+        lastTriggeredImage: nginx@sha256:6b3b6c113f98e901a8b1473dee4c268cf37e93d72bc0a01e57c65b4ab99e58ee
+      type: ImageChange
+    - type: ConfigChange
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/image.dockerRepositoryCheck: "2020-04-17T16:32:43Z"
+    creationTimestamp: "2020-04-17T16:32:42Z"
+    generation: 2
+    labels:
+      app: nginx-new
+      app.kubernetes.io/component: nginx-new
+      app.kubernetes.io/instance: nginx-new
+      app.kubernetes.io/part-of: nginx-new
+    name: nginx-new
+    namespace: nginx-from-ocp
+    resourceVersion: "1341435"
+    selfLink: /apis/image.openshift.io/v1/namespaces/nginx-from-ocp/imagestreams/nginx-new
+    uid: 5bf4120b-a2a1-48bf-b6d6-05296b1d6c46
+  spec:
+    lookupPolicy:
+      local: false
+    tags:
+    - annotations:
+        openshift.io/generated-by: OpenShiftWebConsole
+        openshift.io/imported-from: nginx
+      from:
+        kind: DockerImage
+        name: nginx
+      generation: 2
+      importPolicy: {}
+      name: latest
+      referencePolicy:
+        type: Source
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+      openshift.io/host.generated: "true"
+    creationTimestamp: "2020-04-17T16:32:42Z"
+    labels:
+      app: nginx-new
+      app.kubernetes.io/component: nginx-new
+      app.kubernetes.io/instance: nginx-new
+      app.kubernetes.io/name: ""
+      app.kubernetes.io/part-of: nginx-new
+      app.openshift.io/runtime: ""
+      app.openshift.io/runtime-version: latest
+    name: nginx-new
+    namespace: nginx-from-ocp
+    resourceVersion: "1343092"
+    selfLink: /apis/route.openshift.io/v1/namespaces/nginx-from-ocp/routes/nginx-new
+    uid: 7358566d-8117-4c5e-a2c1-fb4cdc4d7901
+  spec:
+    host: ec2-52-201-251-54.compute-1.amazonaws.com
+    port:
+      targetPort: 80-tcp
+    to:
+      kind: Service
+      name: nginx-new
+      weight: 100
+    wildcardPolicy: None
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
