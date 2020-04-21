@@ -6,7 +6,7 @@ metadata:
   name: apache-service
   namespace: apache-test
 spec:
-  host: apache-service-apache-test.apps.collier-hub.scollier.sysdeseng.com
+  host: XXXXX
   port:
     targetPort: 80
   to:
