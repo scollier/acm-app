@@ -16,3 +16,10 @@ spec:
       containers:
       - name: apache-test
         image: quay.io/scollier/apache-test
+        volumeMounts:
+        - name: aws-vol
+          mountPath: /var/www/html
+      volumes:
+        - name: aws-vol
+          configMap:
+            name: aws-cm
