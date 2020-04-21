@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache-aws
+  namespace: apache-test
+spec:
+  template:
+    spec:
+      containers:
+      - name: apache
+        image: quay.io/scollier/apache-test
