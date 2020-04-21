@@ -3,10 +3,10 @@ data:
   index.html: |
     <center>
     <b>
-    AWS
+    XXX
     </b>
     </center>
 kind: ConfigMap
 metadata:
-  name: aws-cm
+  name: cm
   namespace: apache-test
