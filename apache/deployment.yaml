@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache-test
+  namespace: apache-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache-test
+  template:
+    metadata:
+      labels:
+        app: apache-test
+    spec:
+      containers:
+      - name: apache-test
+        image: quay.io/scollier/apache-test
