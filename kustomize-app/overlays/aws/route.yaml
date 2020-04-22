@@ -6,7 +6,7 @@ metadata:
   name: apache-service
   namespace: aws-apache-test
 spec:
-  host: apache-service-gcp-apache-test.apps.scollier-spoke-gcp.scollier-gcp.scollier.sysdeseng.com
+  host: apache-service-aws-apache-test.apps.scollier-spoke-aws.scollier.sysdeseng.com
   port:
     targetPort: 8080
   to:
