@@ -8,4 +8,4 @@ spec:
     spec:
       containers:
       - name: apache
-        image: quay.io/scollier/apache-test
+        image: centos/httpd-24-centos7
