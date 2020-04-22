@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apache-aws
-  namespace: apache-test
+  name: apache
+  namespace: aws-apache-test
 spec:
   template:
     spec:
