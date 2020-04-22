@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apache-aws
+  name: apache
   namespace: apache-test
 spec:
   replicas: 1
@@ -16,6 +16,7 @@ spec:
       containers:
       - name: apache
         image: XXX
+        - containerPort: 8080
         volumeMounts:
         - name: vol
           mountPath: /var/www/html
