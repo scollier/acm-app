@@ -7,4 +7,4 @@ bases:
 patchesStrategicMerge:
   - deployment.yaml
   - cm.yaml
-  - route.yaml
+#   - route.yaml
