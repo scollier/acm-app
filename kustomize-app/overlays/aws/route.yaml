@@ -4,7 +4,7 @@ metadata:
   labels:
     run: apache-service
   name: apache-service
-  namespace: aws-apache-test
+  namespace: apache-test
 spec:
   host: apache-service-aws-apache-test.apps.scollier-spoke-aws.scollier.sysdeseng.com
   port:
