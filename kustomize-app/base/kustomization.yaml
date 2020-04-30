@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - service.yaml
   - deployment.yaml
-  #- cm.yaml
+  - cm.yaml
