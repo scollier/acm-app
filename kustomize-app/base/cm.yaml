@@ -2,4 +2,4 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cm
-  namespace: XXX
+  namespace: apache-test

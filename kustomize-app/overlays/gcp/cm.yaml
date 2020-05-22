@@ -9,4 +9,4 @@ data:
 kind: ConfigMap
 metadata:
   name: cm
-  namespace: gcp-apache-test
+  namespace: apache-test

@@ -4,7 +4,7 @@ metadata:
   labels:
     run: apache-service
   name: apache-service
-  namespace: azure-apache-test
+  namespace: apache-test
 spec:
   host: apache-service-gcp-apache-test.apps.scollier-spoke-gcp.scollier-gcp.scollier.sysdeseng.com
   port:
