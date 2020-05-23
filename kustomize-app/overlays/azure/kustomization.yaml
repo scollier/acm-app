@@ -5,6 +5,4 @@ bases:
 - ../../base 
 
 patchesStrategicMerge:
-  - deployment.yaml
   - cm.yaml
-  - route.yaml
