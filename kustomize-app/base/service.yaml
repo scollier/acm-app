@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: apache-service
-  namespace: XXX
+  namespace: apache-test
   labels:
     app: app
 spec:
